@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Inicio de Sesión</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-body-secondary">
+ 
+<div class="container">
+  <div class="row min-vh-100 justify-content-center align-items-center">
+     <div class="col-md-10 col-lg-6">  
+       <h1 class="text-center">Iniciar Sesión</h1>
+        <div class="card">
+             <div class="card-body">
+                 <form id="loginForm" novalidate>
+                       <label for="email" class="form-label">Correo Electrónico:</label>
+                       <input type="email" id="email" name="email" class="form-control" required>
+                       <div id="email-validation" class="form-text text-danger"></div>
+                      
+                      <label for="password" class="form-label">Contraseña:</label>
+                      <input type="password" id="password" name="password" class="form-control" required>
+                      <div id="password-validation" class="form-text text-danger"></div>
+                      
+                      <button type="submit" class="btn btn-success text-uppercase mt-3">Registrarme</button>
+                  </form>
+                  <p id="mensajeError" style="color: red;"></p>
+             </div>       
+                  
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+crossorigin="anonymous"></script>
+
+
+<!--inicio de Script-->
+<script>
+$(document).ready(function() {
+  $("#loginForm").submit(function(event) {
+    event.preventDefault();
+
+    const email = $("#email").val();
+    const password = $("#password").val();
+
+    // Validar el formato de correo electrónico
+    const emailReg = new RegExp(/^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/g);
+    if (!email.match(emailReg)) {
+      $("#mensajeError").text("El correo electrónico no es válido.");
+      return;
+    }
+
+    // Validar que la contraseña no esté vacía
+    if (password === "") {
+      $("#mensajeError").text("La contraseña es requerida.");
+      return;
+    }
+
+    // Aquí podrías agregar el código para enviar los datos del formulario a tu servidor
+    // y procesar la autenticación.
+
+    // Si todo está bien, podrías redirigir al usuario a otra página, mostrar un mensaje, etc.
+    $("#mensajeError").text("Inicio de sesión exitoso!");
+  });
+});
+</script>
+
+</body>
+</html>

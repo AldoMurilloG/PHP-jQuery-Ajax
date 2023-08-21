@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora con jQuery</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+   input{
+          font-size: 15px;
+          padding: 10px 20px;
+          margin: 10px;
+        }
+    .problema{
+      font-size: 15px;
+          padding: 10px 20px;
+          margin: 1%;
+    }
+    .problemas{
+      font-size: 15px;
+          padding: 10px 20px;
+          margin-top: 1%;
+    }
+</style>
+</head>
+<body>
+<h1>Calculadora</h1>
+      <div class="card">
+        <label for="numero1" class="form-label">Numero 1: </label>
+        <input type="number" id="numero1" > 
+       </div>
+      <div>
+        <label for="numero2" class="form-label">Numero 2:</label>
+        <input type="number" id="numero2">
+      </div>
+       
+      <select class=" problemas form-select form-select-lg mb-3" aria-label=".form-select-lg example " id="operacion">
+        <option selected>Problema a Resolver</option>
+        <option value="sumar">Sumar</option>
+        <option value="restar">Restar</option>
+        <option value="multiplicar">Multiplicar</option>
+        <option value="dividir">Dividir</option>
+      </select>
+      <button id="calcular" class="problema">Calcular</button>
+      <h3 id="resultado"></h3>
+
+
+
+
+
+
+<script>
+$(document).ready(function() {
+  $("#calcular").click(function() {
+    var numero1 = parseInt($("#numero1").val());
+    var numero2 = parseInt($("#numero2").val());
+    var operacion = $("#operacion").val();
+    var resultado;
+
+    switch (operacion) {
+      case "sumar":
+        resultado = numero1 + numero2;
+        break;
+      case "restar":
+        resultado = numero1 - numero2;
+        break;
+      case "multiplicar":
+        resultado = numero1 * numero2;
+        break;
+      case "dividir":
+        resultado = numero1 / numero2;
+        break;
+      default:
+        resultado = "Operación no válida";
+    }
+
+    $("#resultado").text("Resultado: " + resultado);
+  });
+});
+</script>
+</body>
+</html>
