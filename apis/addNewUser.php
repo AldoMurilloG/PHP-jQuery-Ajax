@@ -35,7 +35,7 @@
             if($result === TRUE) {
                 $response['success'] = true;
                 $response['message'] = "El usuario '$user_name' se $accion con éxito";
-
+                
                 echo json_encode($response);
             } else {
                 $response['message'] = mysqli_error($connect);
@@ -45,6 +45,7 @@
 
         } catch(Exception $e) {
             echo $e->getMessage();
+            echo "aaaaaa";
         }
     } else {
         echo 'SIN ACCESO A LA API';

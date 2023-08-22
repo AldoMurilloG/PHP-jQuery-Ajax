@@ -1,13 +1,13 @@
 <?php
-require("../..database/connection.php");
+require("../../database/connection.php");
 
 //Obtener todos los productos de la base de datos
 $sql = "SELECT * FROM products;";
-$result = $conn->$query($sql);
+$result = $conn->query($sql);
 
 $products = array();
 
-while($row = $result-> fetch_assoc()) {
+while($row = $result->fetch_assoc()) {
     $products[] = $row;
 }
 

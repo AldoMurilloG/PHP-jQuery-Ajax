@@ -1,5 +1,5 @@
 <?php
-require("../..database/connection.php");
+require("../../database/connection.php");
 
 //Obtener el ID del producto a actualizar y los nuevos datos
 $id = $_GET['id'];

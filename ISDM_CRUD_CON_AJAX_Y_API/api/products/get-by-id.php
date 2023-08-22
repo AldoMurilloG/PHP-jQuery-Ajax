@@ -1,5 +1,5 @@
 <?php
-require("../..database/connection.php");
+require("../../database/connection.php");
 
 //Obtener el ID del producto a mostrar
 $id = $_GET['id'];

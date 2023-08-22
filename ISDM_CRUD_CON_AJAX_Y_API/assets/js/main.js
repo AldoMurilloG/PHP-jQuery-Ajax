@@ -73,7 +73,7 @@ $(document).ready(function (event) {
    $('#form').submit(function(e1) {
       e1.preventDefault();
 
-      const method = $('input[name="_methos"]').val();
+      const method = $('input[name="_method"]').val();
 
       const name = $('#name').val();
       const price = $('#price').val();

@@ -70,7 +70,6 @@ $(async function() {
         // Convertimos el formulario en un array de objetos
         let form = $(this).serializeArray(); 
 
-        // TODO: FALTA VALIDAR EL FORM !!!!!!!!!!!!!!!!!!!!!
 
         if(user_id) {
             form.push({
@@ -82,7 +81,6 @@ $(async function() {
         $.post(base_url + 'addNewUser.php', form, function(response) {
             $('#modal-nuevo-usuario').modal('hide'); // Ocultamos el modal de carga
             
-            // TODO: FALTA LIMPIAR los campos del formulario !!!!!!!!!!!!
             alert(response.message);
 
             user_id = null; // reseteamos la variable que guardaba el id
@@ -126,10 +124,29 @@ $(async function() {
         user_id = null;
     });
 
-    $(document).on('click', '.eliminar', function() {
-        let id = $(this).val();
-        
-        // TODO: completar esta funcion !!!!!!!!!!!
-       alert('Eliminar el usuario con id: ' + id);
-    });
+$(document).on('click', '.eliminar', function() {
+    let id = $(this).val();
+
+    let data = {
+        user_id: id
+    }
+
+    $.get(base_url + 'userdelete.php', data)
+        .done(function (response) {
+            if (response.error) {
+                console.log(error.statusText, error.status);
+                alert('Error al conectar con el servidor');
+                
+            } else {
+                console.log(response.message);
+                alert('Error al eliminar el usuario.');
+            }
+        })
+        .fail(function (success) {
+            console.log(success.statusText, success.status);
+            table.ajax.reload(null, false); // actualizamos la tabla
+            alert('Usuario eliminado con éxito.');
+        });
+});
+
 });

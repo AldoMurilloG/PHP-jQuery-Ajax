@@ -30,7 +30,7 @@
 
             <div class="mb-3">
                 <label for="price">Precio:</label>
-                <input type="number" step="0.01" id="form-control" id="price" required>
+                <input type="number" step="0.01" class="form-control" id="price" required>
             </div>
 
             <div class="mb-3">
@@ -72,5 +72,4 @@
   </script>
   <script src="./assets/js/main.js"></script>
 </body>
-
 </html>
